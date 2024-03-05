@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Button, Textarea} from "@nextui-org/react";
+import NoteInput from "@/Components/NoteInput/NoteInput";
 
 export default function NewInstantNote() {
 
@@ -39,13 +40,7 @@ export default function NewInstantNote() {
         <>
             <h1 className="font-semibold mb-1">Send a Note Instantly!</h1>
             <p>This note will sent for printing immediately</p>
-            <Textarea
-                className={"mt-4"}
-                variant={"bordered"}
-                placeholder="Write your love note here"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-            />
+            <NoteInput note={note} setNote={setNote}/>
             <Button
                 onClick={uploadNote}
                 className={"mt-4"} size="md" color={"primary"}>

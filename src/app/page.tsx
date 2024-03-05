@@ -2,8 +2,10 @@
 import React from "react";
 import MainControls from "@/Components/MainControls/MainControls";
 import {NextUIProvider} from "@nextui-org/react";
+import {NotesContextProvider} from "@/app/NotesContextProvider";
 export default function Home() {
   return (
+      <NotesContextProvider>
 <NextUIProvider>
 
       <main className="dark text-foreground bg-background">
@@ -15,6 +17,7 @@ export default function Home() {
     </div>
       </main>
 </NextUIProvider>
+      </NotesContextProvider>
 
   );
 }

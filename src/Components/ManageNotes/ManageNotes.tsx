@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useContext, useEffect, useMemo, useState} from "react";
 import {
     Chip,
     Spinner,
@@ -13,7 +13,8 @@ import {
     Pagination, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem
 } from "@nextui-org/react";
 import {DotsVertical, Trash} from 'tabler-icons-react';
-import {Changa} from "next/dist/compiled/@next/font/dist/google";
+
+import {useNotesContext} from "@/app/NotesContextProvider";
 
 
 export default function ManageNotes() {
@@ -22,6 +23,7 @@ export default function ManageNotes() {
     const [rows, setRows] = useState([]);
     const [page, setPage] = useState(1);
 
+    const {allNotes, setAllNotes} = useNotesContext();
    // define the type of the item
     type item = {
         note: string,
@@ -88,6 +90,7 @@ export default function ManageNotes() {
                     // sort data by sent (false first)
                     data.sort((a: item, b: item) => (a.sent === b.sent) ? 0 : a.sent ? 1 : -1);
                     setRows(data);
+                    setAllNotes(data.map((d: item) => d.note));
                     setIsLoadingData(false);
                 })
                 .catch((err: any) => {

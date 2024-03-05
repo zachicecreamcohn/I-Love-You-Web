@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {Button, Textarea} from "@nextui-org/react";
+import NoteInput from "@/Components/NoteInput/NoteInput";
 
 export default function NewStoredNote() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [note, setNote] = useState("")
+    // const {allNotes, setAllNotes} = useNotesContext();
 
     async function uploadNote() {
         setIsLoading(true)
@@ -38,12 +40,7 @@ export default function NewStoredNote() {
         <>
             <h1 className="font-semibold mb-1">Pen a note</h1>
             <p>This note will be added to the database. On a random day, it will be printed on Nina&apos;s thermal printer.</p>
-            <Textarea
-                className={"mt-4"}
-                variant={"bordered"}
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-                placeholder="Write your love note here" />
+            <NoteInput note={note} setNote={setNote}/>
             <Button
                 isLoading={isLoading}
                 className={"mt-4"} size="md" color={"primary"}

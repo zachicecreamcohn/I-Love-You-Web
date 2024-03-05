@@ -1,14 +1,16 @@
 "use client";
 
 import styles from "./MainControls.module.css";
-import React from "react";
+import React, {useContext} from "react";
 import {NextUIProvider, Tabs, Tab, Card, CardBody, Textarea, Button} from "@nextui-org/react";
 import NewStoredNote from "@/Components/NewStoredNote/NewStoredNote";
 import NewInstantNote from "@/Components/NewInstantNote/NewInstantNote";
 import ManageNotes from "@/Components/ManageNotes/ManageNotes";
+import {useNotesContext} from "@/app/NotesContextProvider";
 
 
 export default function MainControls() {
+    const {allNotes, setAllNotes} = useNotesContext();
     return (
         <>
             <div className="text-left">
